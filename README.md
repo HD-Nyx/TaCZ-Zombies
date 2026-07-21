@@ -9,3 +9,6 @@ This is sort of a spin off from my Point Blank Zombies modpack, it is semi playa
 1.  Kubejs has event bindings which raises the celling of what I can do and how much control I have
 2.  Chunk loading issues won't be problem
 3.  TaCZ has much more addons whic hwill help with devlepment 
+
+> [!NOTE]
+> This repo uses a Apache 2.0 License, you may freely use, modify or distribute my code
