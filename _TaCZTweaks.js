@@ -1,3 +1,4 @@
+// Tweaks for TaCZ guns using TaCZ Attributes 
 function TaCZTweak(event) {
     let server = event.server
     let player = event.player
