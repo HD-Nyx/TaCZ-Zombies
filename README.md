@@ -2,6 +2,8 @@
 > This modpack has not been released yet!
 > This modpack will be Minecraft Neoforge 1.21.1 - 21.1.235
 
+Trello: https://trello.com/b/AcLRNiM8/tacz-zombies
+
 TaCZ: Zombies is a somewhat CoD: Zombies clone built on minecraft using kubejs for logic and TaCZ as the gun framework.
 
 This is sort of a spin off from my Point Blank Zombies modpack, it is semi playable but I decided to rewrite this in Kubejs instead of CC:Tweaked and use TaCZ because
