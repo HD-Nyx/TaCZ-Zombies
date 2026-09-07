@@ -13,7 +13,7 @@ EntityEvents.afterHurt(event => {
                 player.potionEffects.add('minecraft:slowness', 30, 2) 
                 event.server.runCommandSilent(`execute at ${player.username} run playsound minecraft:entity.breeze.hurt hostile @a ~ ~ ~ 1.0 1.0`)
 
-                player.invulnerableTime = 50
+                player.invulnerableTime = 15
                 break
                 
             case 'mutantmonsters:mutant_zombie':
@@ -28,7 +28,7 @@ EntityEvents.afterHurt(event => {
 // 2. Being on fire by molotov (@e)
 EntityEvents.afterHurt(event => {
     let entity = event.entity
-
+    
     if (entity.hasEffect('lrtactical:flammable')) {
         entity.potionEffects.add('minecraft:slowness', 60, 3)
     }

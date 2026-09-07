@@ -1,5 +1,9 @@
+// Events activated upon a player's death
+
+// Imports
 import { PlayerSettings } from "./_Settings"
 
+// Visual Death
 EntityEvents.death(event => {
     let entity = event.entity
 

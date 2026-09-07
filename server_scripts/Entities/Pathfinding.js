@@ -1,5 +1,7 @@
 // Pathfinding for zombies
 // Designed so then zombies know your location at all times and relentlessly chase you down
+
+// Functions
 function GetNearestPlayerCoords(level, x, y, z) {
     let players = level.getPlayers()
     let nearest_player = null
@@ -23,7 +25,7 @@ function GetNearestPlayerCoords(level, x, y, z) {
     }
 }
 
-
+// Events
 LevelEvents.tick(event => {
     let level = event.level
 

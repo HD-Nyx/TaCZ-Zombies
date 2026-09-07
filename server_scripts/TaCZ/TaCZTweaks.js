@@ -1,4 +1,6 @@
 // Tweaks for TaCZ guns using TaCZ Attributes 
+
+// Functions
 function TaCZTweak(event) {
     let server = event.server
     let player = event.player
@@ -8,6 +10,7 @@ function TaCZTweak(event) {
     server.runCommandSilent(`attribute ${username} tacz_attributes:gun_damage base set 0.8`)
 } 
 
+// Events
 PlayerEvents.loggedIn(event => {
     TaCZTweak(event)
 })
@@ -19,4 +22,8 @@ PlayerEvents.loggedOut(event => {
 // No gun melee for you (so op)
 TaCZServerEvents.entityMelee(event => {
     event.cancelMelee()
+})
+
+NativeEvents.onEvent('net.neoforged.neoforge.event.entity.player.SweepAttackEvent', event => {
+    event.setSweeping(false)
 })

@@ -7,7 +7,7 @@ const PointSettings = {
 }
 
 const PlayerSettings = {
-    Speed: 0.09,            // Float (defult = 1)
+    Speed: 0.1,            // Float (defult = 0.1)
     JumpHeight: 0.35,       // Float 
     DividePointsAmount: 2,  // Float (change to 1 for no changes)
 

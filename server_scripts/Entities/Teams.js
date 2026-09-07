@@ -1,3 +1,6 @@
+// Teams for players and mobs, used for changing entity to entity interactions
+// Teams are created at '../_Initialize.js'
+
 // Team for player
 PlayerEvents.loggedIn(event => {
     let server = event.server
@@ -15,7 +18,7 @@ PlayerEvents.loggedOut(event => {
     server.runCommandSilent(`team leave ${player.username}`)
 })
 
-// Team for zombies
+// Adds new Zombies to the Zombies team
 EntityEvents.spawned(event => {
     let server = event.server
     let entity = event.entity

@@ -16,7 +16,6 @@ EntityEvents.death(event => {
     let entity = event.entity
     let killer = event.source.player 
 
-
     if (!killer || !killer.isPlayer()) return
     
     let cue_points = 0
@@ -40,7 +39,6 @@ EntityEvents.death(event => {
     }
 
     if (cue_points > 0) {
-        // Killstreak
         let current_tick = event.server.tickCount
         let last_kill_tick = killer.persistentData.getInt('LastKillTick') || 0
         let combo_count = killer.persistentData.getInt('KillCombo') || 0
@@ -50,7 +48,6 @@ EntityEvents.death(event => {
         if (current_tick - last_kill_tick <= time_window) {
             combo_count += 1
         } else {
-            // Expired
             combo_count = 1 
         }
 
@@ -64,7 +61,6 @@ EntityEvents.death(event => {
 
         let current_points = killer.persistentData.getInt('Points')
         let new_points = current_points + cue_points
-
         killer.persistentData.putInt('Points', new_points)
         
         killer.displayClientMessage(Text.of(kill_message), true)

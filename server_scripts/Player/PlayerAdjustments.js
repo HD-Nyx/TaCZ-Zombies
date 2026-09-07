@@ -1,6 +1,7 @@
 // Player stats tweaked for TaCZ: Zombies
-import { PlayerSettings } from "./_Settings"
+import { PlayerSettings } from "../_Settings"
 
+/// @
 function Tweak(event){
     let player = event.player
 

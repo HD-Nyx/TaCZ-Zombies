@@ -17,11 +17,11 @@
             "@package/*": [
                 "../../.probe/@package/*"
             ],
-            "@side-only/server": [
-                "../../.probe/@side-only/server"
+            "@side-only/client": [
+                "../../.probe/@side-only/client"
             ],
-            "@side-only/server/*": [
-                "../../.probe/@side-only/server/*"
+            "@side-only/client/*": [
+                "../../.probe/@side-only/client/*"
             ],
             "@special": [
                 "../../.probe/@special"
@@ -38,7 +38,7 @@
         "./**/*.js",
         "./**/*.d.ts",
         "../../.probe/@package/**/*.d.ts",
-        "../../.probe/@side-only/server/**/*.d.ts",
+        "../../.probe/@side-only/client/**/*.d.ts",
         "../../.probe/@special/**/*.d.ts"
     ]
 }
