@@ -1,4 +1,7 @@
-// Tweaks for TaCZ guns using TaCZ Attributes 
+//-- TaCZ: Zombies
+// Location: Server
+// Purpose: Tweaking gun stats
+// Configurable: no
 
 // Functions
 function TaCZTweak(event) {
@@ -22,8 +25,4 @@ PlayerEvents.loggedOut(event => {
 // No gun melee for you (so op)
 TaCZServerEvents.entityMelee(event => {
     event.cancelMelee()
-})
-
-NativeEvents.onEvent('net.neoforged.neoforge.event.entity.player.SweepAttackEvent', event => {
-    event.setSweeping(false)
 })

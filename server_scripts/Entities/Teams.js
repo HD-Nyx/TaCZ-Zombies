@@ -1,5 +1,9 @@
-// Teams for players and mobs, used for changing entity to entity interactions
-// Teams are created at '../_Initialize.js'
+//-- TaCZ: Zombies
+// Location: Server
+// Purpose: Team manager for players and zombies
+// Configurable: No
+
+// Teams are created at '../Initialize.js'
 
 // Team for player
 PlayerEvents.loggedIn(event => {

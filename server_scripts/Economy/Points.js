@@ -1,5 +1,9 @@
-import { PointSettings } from "./_Settings"
-import { PlayerSettings } from "./_Settings"
+//-- TaCZ: Zombies
+// Location: Server
+// Purpose: Provide players points after killing a certion zombie
+// Configurable: Yes
+
+var Settings = global.TaCZ_Zombies.Settings
 
 // Register Points (scoreboard)
 ServerEvents.loaded(event => {
@@ -23,18 +27,18 @@ EntityEvents.death(event => {
 
     switch (true) {
         case entity.type === 'minecraft:zombie' && entity.isBaby():
-            cue_points = PointSettings.BabyZombieAmount
-            kill_message = `§c+${PointSettings.BabyZombieAmount}§r points for killing a Baby Zombie..`
+            cue_points = Settings.Points.BabyZombieAmount
+            kill_message = `§c+${Settings.Points.BabyZombieAmount}§r points for killing a Baby Zombie..`
             break
             
         case entity.type === 'minecraft:zombie':
-            cue_points = PointSettings.ZombieAmount
-            kill_message = `§c+${PointSettings.ZombieAmount}§r points for killing a Zombie..`
+            cue_points = Settings.Points.ZombieAmount
+            kill_message = `§c+${Settings.Points.ZombieAmount}§r points for killing a Zombie..`
             break
             
         case entity.type === 'mutantmonsters:mutant_zombie':
-            cue_points = PointSettings.BruteAmount
-            kill_message = `§c+${PointSettings.BruteAmount}§r points for killing a Brute..`
+            cue_points = Settings.Points.BruteAmount
+            kill_message = `§c+${Settings.Points.BruteAmount}§r points for killing a Brute..`
             break
     }
 
@@ -63,7 +67,7 @@ EntityEvents.death(event => {
         let new_points = current_points + cue_points
         killer.persistentData.putInt('Points', new_points)
         
-        killer.displayClientMessage(Text.of(kill_message), true)
-        killer.server.runCommandSilent(`scoreboard players set ${killer.username} Points ${new_points}`)
+        killer.displayClientMessage(kill_message, true)
+        event.server.runCommandSilent(`scoreboard players set ${killer.username} Points ${new_points}`)
     }
 })

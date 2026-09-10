@@ -1,4 +1,7 @@
-// Situations where slowness gets applied
+//-- TaCZ: Zombies
+// Location: Server
+// Purpose: Slow down the player after getting hit by a zombie or molitov
+// Configurable: No
 
 // 1. Getting hit by a zombie (@a)
 EntityEvents.afterHurt(event => {
@@ -21,7 +24,7 @@ EntityEvents.afterHurt(event => {
                 player.potionEffects.add('minecraft:resistance', 80, 2)
                 event.server.runCommandSilent(`execute at ${player.username} run playsound minecraft:entity.breeze.death hostile @a ~ ~ ~ 1.0 1.0`)
                 break
-        }
+            }
     }
 })
 

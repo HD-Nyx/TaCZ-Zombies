@@ -1,7 +1,10 @@
-// Player stats tweaked for TaCZ: Zombies
-import { PlayerSettings } from "../_Settings"
+//-- TaCZ: Zombies
+// Location: Server
+// Purpose: Change players movement stats
+// Configurable: Yes
 
-/// @
+var Settings = global.TaCZ_Zombies.Settings
+
 function Tweak(event){
     let player = event.player
 
@@ -9,8 +12,8 @@ function Tweak(event){
     let jump_attribute = player.getAttribute('minecraft:generic.jump_strength')
     
     if (jump_attribute) {
-        speed_attribute.setBaseValue(PlayerSettings.Speed)
-        jump_attribute.setBaseValue(PlayerSettings.JumpHeight)
+        speed_attribute.setBaseValue(Settings.Player.Speed)
+        jump_attribute.setBaseValue(Settings.Player.JumpHeight)
     }
 }
 

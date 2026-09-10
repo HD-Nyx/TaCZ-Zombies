@@ -1,5 +1,7 @@
-// Pathfinding for zombies
-// Designed so then zombies know your location at all times and relentlessly chase you down
+//-- TaCZ: Zombies
+// Location: Server
+// Purpose: Give zombies the ability to track down the nearest play from anywhere of the map
+// Configurable: No
 
 // Functions
 function GetNearestPlayerCoords(level, x, y, z) {

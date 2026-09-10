@@ -1,3 +1,8 @@
+//-- TaCZ: Zombies
+// Location: Server
+// Purpose: Add persistent data to player
+// Configurable: No
+
 // All the persistants for player
 PlayerEvents.loggedIn(event => {
     let player = event.player

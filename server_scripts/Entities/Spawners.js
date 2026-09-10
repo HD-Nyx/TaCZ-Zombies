@@ -1,56 +1,71 @@
-// Spawners dictate where a zombie would spawn, placed spawners will save it's coords to the server for later use
+//-- TaCZ: Zombies
+// Location: Server
+// Purpose: Track every spawner placed and broken so then zombies know where to spawn
+// Configurable: No
 
-// Get's the random random array, matches the index and get's the cooords
-function RandomSpawner() { 
-    ServerEvents.tick(event => {
-        let server_data = event.server.persistentData
+// Get a random spawner coordinate
+function RandomSpawner(event) {
+    let ServerData = event.server.persistentData
+    let Spawners = ServerData.getList('spawners', 8)
 
-        if (!server_data.spawners || server_data.spawners.length === 0) return
+    if (Spawners.isEmpty()) return null
 
-        let level = event.server.overworld()
-        let random_spawner = server_data.spawners[Math.floor(Math.random() * server_data.spawners.length)]
-        let coords = random_spawner.split(',')
-        
-        let x = parseInt(coords[0])
-        let y = parseInt(coords[1])
-        let z = parseInt(coords[2])
+    let RandomIndex = Math.floor(Math.random() * Spawners.size())
+    let RandomPosition = Spawners.getString(RandomIndex)
+    let Coordinates = RandomPosition.split(',')
 
-        return x, y, z
-    })
+    return {
+        x: parseInt(Coordinates[0]),
+        y: parseInt(Coordinates[1]),
+        z: parseInt(Coordinates[2])
+    }
 }
 
-// Marks spawner corods if placed
+// Marks spawner coords if placed
 BlockEvents.placed('minecraft:spawner', event => {
-    let server = event.server
-    let server_data = server.persistentData
-    let posistion = `${event.block.x},${event.block.y},${event.block.z}`
-    let player = event.player
+    let ServerData = event.server.persistentData
+    let Position = `${event.block.x},${event.block.y},${event.block.z}`
+    let Player = event.player
 
-    server_data.spawners = server_data.spawners || []
+    let Spawners = ServerData.getList('spawners', 8)
 
-    if (server_data.spawners.indexOf(posistion) === -1) {
-        server_data.spawners.push(posistion)
+    let AlreadyExists = false
+
+    for (let Index = 0; Index < Spawners.size(); Index++) {
+        if (Spawners.getString(Index) === Position) {
+            AlreadyExists = true
+            break
+        }
     }
-    
-    if (player) {
-        player.tell(`§a[TaCZ: Zombies] Spawner placed at ${posistion}`)
+
+    if (!AlreadyExists) {
+        Spawners.add(Spawners.size(), StringTag.valueOf(Position))
+        ServerData.put('spawners', Spawners)
+    }
+
+    if (Player) {
+        Player.tell(`§a[TaCZ: Zombies] Spawner placed at ${Position}`)
     }
 })
 
-// sudo rm rf the spawner data if broken block === spawner
+// Removes spawner data if a spawner is broken
 BlockEvents.broken('minecraft:spawner', event => {
-    let server = event.server
-    let server_data = server.persistentData
-    let posistion = `${event.block.x},${event.block.y},${event.block.z}`
-    let player = event.player
+    let ServerData = event.server.persistentData
+    let Position = `${event.block.x},${event.block.y},${event.block.z}`
+    let Player = event.player
 
-    if (server_data.spawners) {
-        let index = server_data.spawners.indexOf(posistion)
-        
-        if (index !== -1) server_data.spawners.splice(index, 1)
+    let Spawners = ServerData.getList('spawners', 8)
+
+    for (let Index = 0; Index < Spawners.size(); Index++) {
+        if (Spawners.getString(Index) === Position) {
+            Spawners.remove(Index)
+            break
+        }
     }
 
-    if (player) {
-        player.tell(`§c[TaCZ: Zombies] Spawner destryed at ${posistion}`)
+    ServerData.put('spawners', Spawners)
+
+    if (Player) {
+        Player.tell(`§c[TaCZ: Zombies] Spawner destroyed at ${Position}`)
     }
 })

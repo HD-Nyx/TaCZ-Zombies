@@ -4,5 +4,6 @@
         "minecraft",
         "kubejs",
         "neoforge"
-    ]
+    ],
+    "probejs.hintsForLLM": true
 }

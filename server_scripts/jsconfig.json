@@ -34,11 +34,15 @@
     "typeAcquisition": {
         "enable": true
     },
+    
     "include": [
         "./**/*.js",
+        "./**/*.ts",
         "./**/*.d.ts",
+        "../typing/**/*.d.ts",
         "../../.probe/@package/**/*.d.ts",
         "../../.probe/@side-only/server/**/*.d.ts",
         "../../.probe/@special/**/*.d.ts"
     ]
+
 }

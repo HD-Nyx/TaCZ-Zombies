@@ -1,3 +1,8 @@
+//-- TaCZ: Zombies
+// Location: Server
+// Purpose: Disable baby zombie spawning
+// Configurable: No
+
 // these fuckers are so annoying to deal with during testing, so I decided to make this
 
 EntityEvents.spawned(event => {
@@ -7,7 +12,7 @@ EntityEvents.spawned(event => {
         let isBaby = entity.nbt.getBoolean('IsBaby')
         
         if (isBaby) {
-            entity.mergeNbt({ IsBaby: false })
+            entity.mergeNbt({IsBaby: false})
         }
     }
 })
